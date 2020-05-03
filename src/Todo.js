@@ -1,12 +1,19 @@
-import React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 
-export const Todo = ({ todo }) => {
-
+export const Todo = ({ todo, onRemove }) => {
+    const [complete, setComplete] = useState(false);
     return (
-        <View style={styles.todo}>
-            <Text>{todo.title}</Text>
-        </View>
+        <TouchableOpacity
+            activeOpacity={0.7}
+            onPress={() => setComplete(!complete)}
+            onLongPress={() => { onRemove(todo.id) }}
+        >
+            <View style={[styles.todo, complete && { backgroundColor: '#00ff00' }]}>
+                <Text>{todo.title}</Text>
+            </View>
+        </TouchableOpacity>
+
     )
 }
 

@@ -22,6 +22,7 @@ export const AddTodo = ({ onSubmit }) => {
                 placeholder="Введите название дела..."
                 autoCorrect={false}
                 autoCapitalize="none"
+                onSubmitEditing={presshandler}
                 //keyboardType="web-search"
             />
             <Button title="Добавить" onPress={presshandler} />

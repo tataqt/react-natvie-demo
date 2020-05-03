@@ -11,8 +11,11 @@ export default function App() {
     setTodods(prev => [...prev, {
       id: Date.now().toString(),
       title
-    }
-    ]);
+    }]);
+  }
+
+  const removeTodo = id => {
+    setTodods(prev => prev.filter(todo => todo.id !== id))
   }
 
   return (
@@ -24,7 +27,7 @@ export default function App() {
         <FlatList
           keyExtractor={item => item.id.toString()}
           data={todos}
-          renderItem={({ item }) => (<Todo todo={item} />)}
+          renderItem={({ item }) => (<Todo todo={item} onRemove={removeTodo} />)}
         />
       </View>
     </View>
